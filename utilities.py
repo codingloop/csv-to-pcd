@@ -23,6 +23,7 @@ def get_new_file_ref_without_overwrite(file_name: str, output_dir: str) -> TextI
 
 
 if __name__ == '__main__':
+    """ Only for testing, run os.mkdirs(testdir) first"""
     f1 = get_new_file_reference("test1", "testdir")
     f1.close()
 
