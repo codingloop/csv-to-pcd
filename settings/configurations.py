@@ -1,6 +1,6 @@
 DELETE_EXISTING_OUTPUT_DIRECTORY = False
 OVERWRITE_EXISTING = False
 PARALLEL_NUMBER_OF_RUNS = 40
-INPUT_DIR = "testdir"
-OUTPUT_DIR = "testdir/out"
+INPUT_DIR = r"testdir"
+OUTPUT_DIR = r"testdir/out"
 PCD_FILE_EXTENSION = "pcd"
