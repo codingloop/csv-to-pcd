@@ -8,7 +8,7 @@ from settings.pcd_config import PCD_HEADER
 from utilities import get_new_file_reference
 
 
-def convert_to_pcd(filename: str, input_dir: str, output_dir: str, file_fun: Callable) -> None:
+def convert_to_pcd(filename: str, input_dir: str, output_dir: str, file_fun: Callable) -> str:
     if not filename.endswith(".csv"):
         raise CSVFIleError("File not ends with .csv extension")
 
@@ -39,6 +39,8 @@ def convert_to_pcd(filename: str, input_dir: str, output_dir: str, file_fun: Cal
 
     if file_ref:
         file_ref.close()
+
+    return f"Successfully converted the file {filename}"
 
 
 # if __name__ == '__main__':
