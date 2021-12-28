@@ -1,5 +1,7 @@
+import os
 import time
 from os.path import exists as file_exists
+from typing import Iterable
 
 from typing.io import TextIO
 
@@ -20,6 +22,27 @@ def get_new_file_ref_without_overwrite(file_name: str, output_dir: str) -> TextI
         return get_new_file_reference(new_file_name, output_dir)
 
     return get_new_file_reference(file_name, output_dir)
+
+
+def list_of_files(path: str) -> Iterable[str]:
+    for file in os.listdir(path):
+        if os.path.isfile(os.path.join(path, file)):
+            yield file
+
+
+def get_files_chunk(path: str, chunk_size: int) -> Iterable[str]:
+    files_list = list(list_of_files(path))
+
+    for _ in range(0, len(files_list), chunk_size):
+        current_chunk, files_list = files_list[:chunk_size], files_list[chunk_size:]
+        yield current_chunk
+
+
+def iterable_for_threading(input_dir, output_dir) -> Iterable[tuple]:
+    file_list = list(list_of_files(input_dir))
+
+    for file in file_list:
+        yield file, input_dir, output_dir, get_new_file_reference
 
 
 if __name__ == '__main__':
