@@ -32,7 +32,7 @@ def convert_to_pcd(filename: str, input_dir: str, output_dir: str, file_fun: Cal
 
     try:
         # Read the CSV file as dataframe which is separated by space
-        df = pd.read_csv(f"{input_dir}/{filename}", sep=" ")
+        df = pd.read_csv(f"{input_dir}/{filename}", sep=" ", header=None)
 
     except Exception as e:
         raise CSVFIleError(e)

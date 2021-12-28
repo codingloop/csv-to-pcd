@@ -29,6 +29,8 @@ Below are the details on parameters present in `configurations.py` file
 - *PCD_FILE_EXTENSION* => default value `pcd`
   Extension with which file will be saved. For example, if input filename is `full_data.csv`, then output filename will 
   be `full_data.pcd` when configuration is set as `PCD_FILE_EXTENSION = "pcd"`
+- *DELETE_EXISTING_OUTPUT_DIRECTORY* => default value `False`  
+  Currently this parameter is not supported
 
 
 ### Running:
