@@ -9,7 +9,7 @@ Python version 3.8+ required
    1. Execute `python -m venv venv` -> This will create virtual environment with name `venv`
    2. Activate the virtual environment using the command `venv\Scripts\activate` (command might be little different in 
    mac or linux)
-   3. Install all the dependencies by executing `pip install requirements.txt`
+   3. Install all the dependencies by executing `pip install -r requirements.txt`
 4. Inside settings package, view and edit the `configurations.py` to configure the input and output directories
 
 
