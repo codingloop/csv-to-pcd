@@ -1,6 +1,7 @@
 import os
 import sys
 from concurrent.futures.thread import ThreadPoolExecutor
+from functools import partial
 from typing import Union
 
 from pcd_converter import convert_to_pcd
@@ -33,11 +34,11 @@ def execute_pcd_conversion(input_dir: str = INPUT_DIR, output_dir: str = OUTPUT_
 
     # Create a threadpool executor for parallel processing
     with ThreadPoolExecutor(max_workers=threads) as executor:
+        # Create a partial function as 3 parameters will be same for all threads
+        target_function = partial(convert_to_pcd, input_dir, output_dir, file_fun)
+
         # Execute conversion for each csv file in input directory
-        # todo: Remove redundant iterators by using partial functions
-        results = executor.map(convert_to_pcd, list_of_files(input_dir), iter(lambda: input_dir, None),
-                               iter(lambda: output_dir, None), iter(lambda: file_fun, None),
-                               chunksize=threads)
+        results = executor.map(target_function, list_of_files(input_dir), chunksize=threads)
 
         # Print the results
         for result in results:
