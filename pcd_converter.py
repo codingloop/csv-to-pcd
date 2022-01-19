@@ -7,7 +7,7 @@ from exceptions import CSVFIleError, PCDConversionError
 from settings.pcd_config import PCD_HEADER
 
 
-def convert_to_pcd(filename: str, input_dir: str, output_dir: str, file_fun: Callable) -> str:
+def convert_to_pcd(input_dir: str, output_dir: str, file_fun: Callable, filename: str) -> str:
     """
     Convert csv file to pcd file
     Args:
